@@ -1,8 +1,6 @@
 var stompClient = null;
 
-$(document).ready(function() {
-    connect();
-});
+connect();
 
 function connect() {
     var socket = new SockJS('/hello');
@@ -20,6 +18,6 @@ $(function() {
         e.preventDefault();
     });
     $("#send").click(function() {
-        stompClient.send("/app/hello", {}, $("#name").val());
+        stompClient.send("/app/hello", {}, JSON.stringify($("#name").val()));
     });
 });
